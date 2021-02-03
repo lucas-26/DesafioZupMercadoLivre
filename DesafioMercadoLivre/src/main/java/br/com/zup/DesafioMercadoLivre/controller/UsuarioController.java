@@ -15,13 +15,13 @@ import br.com.zup.DesafioMercadoLivre.model.Usuario;
 import br.com.zup.DesafioMercadoLivre.repository.UsuarioRepository;
 
 @RestController
-@RequestMapping(value = "MercadoLivre/Usuario")
+@RequestMapping("/Usuario")
 public class UsuarioController {
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
-	@PostMapping(value = "/CadastrarUsuario")
+	@PostMapping
 	public ResponseEntity<?> cadastro(@RequestBody @Valid RequestUsuario requestUsuario){
 		try {
 			Usuario usuario = Converte.ConverteRequestParaUsuario(requestUsuario);
