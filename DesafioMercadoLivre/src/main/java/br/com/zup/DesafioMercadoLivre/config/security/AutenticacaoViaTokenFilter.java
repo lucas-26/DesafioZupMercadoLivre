@@ -41,13 +41,13 @@ public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
 	private void autenticarCliente(String token) {
 		Long idUsuario = tokenService.getIdByUser(token);
 		Usuario usuario = usuarioRep.findById(idUsuario).get();
-		UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(usuario, null);
+		UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(usuario, null, null);
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 	}
 
 	private String recuperarToken(HttpServletRequest request) {
 		String token = request.getHeader("Authorization");
-		if(token == null || token.isEmpty() || token.startsWith("Bearer ")) {
+		if(token == null || token.isEmpty() || !token.startsWith("Bearer ")) {
 			return null;
 		}else {
 			return token.substring(7, token.length());
