@@ -15,18 +15,16 @@ import br.com.zup.DesafioMercadoLivre.model.Categoria;
 import br.com.zup.DesafioMercadoLivre.repository.CategoriaRepository;
 
 @RestController
-@RequestMapping("MercadoLivre/Categorias")
-public class CategoriasController {
+@RequestMapping("/Categoria")
+public class CategoriaController {
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;
-
-	@PostMapping(value =  "/CadastrarCategoria")
-	public ResponseEntity<?> cadastrar(@RequestBody @Valid CategoriaRequest categoriaRequest) {
-
+	
+	@PostMapping
+	public ResponseEntity<?> cadastrar(@RequestBody @Valid CategoriaRequest categoriaRequest){
 		Categoria categoria = Converte.ConverteRequestParaCategoria(categoriaRequest);
 		categoriaRepository.save(categoria);
-
 		return ResponseEntity.ok().build();
 	}
 }
