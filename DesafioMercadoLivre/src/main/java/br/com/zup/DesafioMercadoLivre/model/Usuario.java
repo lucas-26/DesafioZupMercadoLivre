@@ -15,8 +15,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import br.com.zup.DesafioMercadoLivre.config.security.GerarHash;
 
 @Entity
-public class Usuario implements UserDetails{
+public class Usuario implements UserDetails {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -44,7 +48,7 @@ public class Usuario implements UserDetails{
 	public String getSenha() {
 		return senha;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}

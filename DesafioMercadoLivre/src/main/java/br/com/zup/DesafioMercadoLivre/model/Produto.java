@@ -21,6 +21,7 @@ public class Produto {
 	private String descricao;
 	private String categoria;
 	private LocalDateTime instanteCadastro;
+	private Long idUsuario;
 
 	public long getId() {
 		return id;
@@ -46,16 +47,21 @@ public class Produto {
 		return instanteCadastro;
 	}
 
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
 	@Deprecated
 	public Produto() {
 	}
 
-	public Produto(List<Caracteristicas> caracteristicas, long quantidade, String descricao, String categoria) {
+	public Produto(List<Caracteristicas> caracteristicas, long quantidade, String descricao, String categoria,
+			LocalDateTime instanteCadastro, Long idUsuario) {
 		super();
 		this.caracteristicas = caracteristicas;
 		this.quantidade = quantidade;
 		this.descricao = descricao;
 		this.categoria = categoria;
-		this.instanteCadastro = LocalDateTime.now();
+		this.instanteCadastro = instanteCadastro;
+		this.idUsuario = idUsuario;
 	}
 }
