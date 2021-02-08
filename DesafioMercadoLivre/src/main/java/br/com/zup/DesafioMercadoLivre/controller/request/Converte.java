@@ -11,6 +11,8 @@ import br.com.zup.DesafioMercadoLivre.model.Arquivos;
 import br.com.zup.DesafioMercadoLivre.model.Caracteristicas;
 import br.com.zup.DesafioMercadoLivre.model.Categoria;
 import br.com.zup.DesafioMercadoLivre.model.Imagem;
+import br.com.zup.DesafioMercadoLivre.model.OpiniaoSobreProduto;
+import br.com.zup.DesafioMercadoLivre.model.Pergunta;
 import br.com.zup.DesafioMercadoLivre.model.Produto;
 import br.com.zup.DesafioMercadoLivre.model.Usuario;
 import br.com.zup.DesafioMercadoLivre.repository.ArquivosRepository;
@@ -44,5 +46,13 @@ public class Converte {
 			arquivosImagen.add(arc);
 		});
 		return new Imagem(arquivosImagen, requestImagem.getIdProduto(), requestImagem.getIdUsuario());
+	}
+
+	public static OpiniaoSobreProduto ConverteRequestParaOpiniao(RequestOpiniao requestOpiniao) {
+		return new OpiniaoSobreProduto(requestOpiniao.getNota(), requestOpiniao.getTitulo(), requestOpiniao.getDescricao(), requestOpiniao.getIdUsuario(), requestOpiniao.getIdProduto());
+	}
+
+	public static Pergunta ConverteRequestParaPerguntas(@Valid PerguntaRequest perguntaRequest) {
+		return new Pergunta(perguntaRequest.getTitulo(), perguntaRequest.getIdUsuario(), perguntaRequest.getIdProduto());
 	}
 }
